@@ -1,64 +1,99 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using StarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
-
-    private Rigidbody capsuleRB;
-    private PlayerInput playerInput;
+    //get references
+    private Rigidbody _capsuleRb;
     private PlayerInputActions playerInputActions;
+    public Animator animator;
     
-    
+    //Parameters for movement
     [Header("Movement")]
-    public float speed = 5f;
+    public float moveSpeed = 5f;
     
     public float groundDrag;
-    
 
+    public float jumpForce;
+    public float jumpCooldown;
+    public float airMultiplier;
+    public bool readyToJump;
+
+
+    //parameters for Raycasting
     [Header("Ground Check")] 
     public float playerHeight;
     public LayerMask whatIsGround;
-    private bool grounded;
+    public bool grounded;
     
     
     private void Awake()
     {
-        capsuleRB = GetComponent<Rigidbody>();
-        playerInput = GetComponent<PlayerInput>();
+        _capsuleRb = GetComponent<Rigidbody>();
+        GetComponent<PlayerInput>();
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
-        playerInputActions.Player.Jump.performed += jump;
+        playerInputActions.Player.Jump.performed += Jump;
     }
 
     private void FixedUpdate()
     {
         Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
-        capsuleRB.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * (speed * 10f), ForceMode.Force);
+        //on ground
+        if(grounded)
+            _capsuleRb.AddForce(new Vector3(inputVector.x, 0, inputVector.y).normalized * (moveSpeed * 10f), ForceMode.Force); 
+        //in air
+        else
+            _capsuleRb.AddForce(new Vector3(inputVector.x, 0, inputVector.y).normalized * (moveSpeed * 10f * airMultiplier), ForceMode.Force);
     }
 
     private void Update()
     {
+        //ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-
+        
+        SpeedControl();
+        
+        //handle drag
         if (grounded)
         {
-            Debug.Log("TEsting");
-            capsuleRB.drag = groundDrag;
+            _capsuleRb.drag = groundDrag;
         }
-        else capsuleRB.drag = 0;
+        else _capsuleRb.drag = 0;
+        
+        
+        animator.SetFloat("Horizontal", _capsuleRb.velocity.x);
+        animator.SetFloat("Vertical", _capsuleRb.velocity.z);
+        animator.SetFloat("Speed", _capsuleRb.velocity.sqrMagnitude);
+    }
+
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(_capsuleRb.velocity.x, 0f, _capsuleRb.velocity.z);
+        
+        //Limit velocity if needed
+        if (flatVel.magnitude > moveSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            _capsuleRb.velocity = new Vector3(limitedVel.x, _capsuleRb.velocity.y, limitedVel.z);
+        }
     }
 
 
-    public void jump(InputAction.CallbackContext context)
+    private void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log(context);
-        if (context.performed)
+        //checks if jump button assigned in input system has been pressed
+        if (context.performed && readyToJump && grounded)
         {
-            Debug.Log("jump!" + context.phase);
-            capsuleRB.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+            //makes y = 0 to make sure jump is always the same height
+            _capsuleRb.velocity = new Vector3(_capsuleRb.velocity.x, 0f, _capsuleRb.velocity.z); 
+            readyToJump = false;
+            _capsuleRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            Invoke(nameof(ResetJump), jumpCooldown);
         }
+    }
+
+    private void ResetJump()
+    {
+        readyToJump = true;
     }
 }
