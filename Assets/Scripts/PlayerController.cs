@@ -9,7 +9,13 @@ public class PlayerController : MonoBehaviour
     
     //Parameters for movement
     [Header("Movement")]
-    public float moveSpeed = 5f;
+    private float moveSpeed;
+    public float sprintSpeed;
+    public float walkSpeed;
+
+    public float dashSpeed;
+    public bool dashing; 
+    
     
     public float groundDrag;
 
@@ -17,6 +23,16 @@ public class PlayerController : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     public bool readyToJump;
+
+    public MovementState state;
+    public enum MovementState
+    {
+        walking,
+        sprinting,
+        crouching,
+        dashing,
+        air
+    }
 
 
     //parameters for Raycasting
@@ -35,10 +51,40 @@ public class PlayerController : MonoBehaviour
         playerInputActions.Player.Jump.performed += Jump;
     }
 
+    private void StateHandler(bool isSprintingPressed)
+    {
+        
+        //Mode - Dashing
+        if (dashing)
+        {
+            state = MovementState.dashing;
+            moveSpeed = dashSpeed;
+        }
+        //Mode -Sprinting
+        else if (grounded && isSprintingPressed)
+        {
+            state = MovementState.sprinting;
+            moveSpeed = sprintSpeed;
+            
+        }
+        //Mode - walking
+        else if (grounded)
+        {
+            state = MovementState.walking;
+            moveSpeed = walkSpeed;
+        }
+        else
+        {
+            state = MovementState.air;
+        }
+        
+    }
     private void FixedUpdate()
     {
         Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
-        //on ground
+        bool IsSprinting = playerInputActions.Player.Sprint.inProgress;
+        StateHandler(IsSprinting);
+        //adds drag when on ground and not dashing
         if(grounded)
             _capsuleRb.AddForce(new Vector3(inputVector.x, 0, inputVector.y).normalized * (moveSpeed * 10f), ForceMode.Force); 
         //in air
@@ -52,13 +98,12 @@ public class PlayerController : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         
         SpeedControl();
-        
         //handle drag
-        if (grounded)
+        if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching)
         {
             _capsuleRb.drag = groundDrag;
         }
-        else _capsuleRb.drag = 0;
+        if(!grounded) _capsuleRb.drag = 0;
         
         
         animator.SetFloat("Horizontal", _capsuleRb.velocity.x);
@@ -81,6 +126,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
+        
         //checks if jump button assigned in input system has been pressed
         if (context.performed && readyToJump && grounded)
         {
