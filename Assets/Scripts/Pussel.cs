@@ -20,6 +20,6 @@ public class Pussel : MonoBehaviour
     }
     void Update()
     {
-        if (isControlJustPressed.E) TakeDamage();
+        //if (isControlJustPressed.E) TakeDamage();
     }
 }

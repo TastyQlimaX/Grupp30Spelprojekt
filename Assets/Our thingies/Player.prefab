@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 5333810861723122482}
   - component: {fileID: 5333810861723122484}
   - component: {fileID: 5333810861723122481}
+  - component: {fileID: 621019160145392482}
   - component: {fileID: 5333810861723122486}
   - component: {fileID: 5333810861723122485}
   m_Layer: 0
@@ -227,17 +228,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5333810861723122486}
-  moveSpeed: 7
+  sprintSpeed: 0
+  walkSpeed: 0
+  dashSpeed: 0
+  dashing: 0
   groundDrag: 5
   jumpForce: 6
   jumpCooldown: 0.25
   airMultiplier: 0.4
   readyToJump: 1
+  state: 0
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
   grounded: 0
+--- !u!114 &621019160145392482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333810861723122447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7677b0748436b4d4ba7d6f8971f1a70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 0}
+  dashForce: 0
+  dashDuration: 0
+  dashCD: 0
 --- !u!95 &5333810861723122486
 Animator:
   serializedVersion: 4
