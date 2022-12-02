@@ -6,7 +6,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Track 1
+  m_Name: Forest
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 627178d2903aab64cbfcdb410f231cce
   m_Children: []
@@ -15,6 +15,39 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 5965917135045583508}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &-7307517238166370759
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 850c853cdf4c20b44b62b4be8d2ccb31
+  m_EffectName: Attenuation
+  m_MixLevel: a091012bfc9a7fd4fa32c63284f9589b
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &-6303636089287177368
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Village
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 4b92cad823a709e46948a7decdb66fea
+  m_Children: []
+  m_Volume: 8db1c74e711bb8142aa4c466cf5005ff
+  m_Pitch: 0a4cc07912c6b6e4a98ae1796445ed8d
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -7307517238166370759}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -39,6 +72,7 @@ AudioMixerController:
   - guids:
     - 38e295c9b26c19243b61f0c3e975a7ee
     - 627178d2903aab64cbfcdb410f231cce
+    - 4b92cad823a709e46948a7decdb66fea
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -52,6 +86,7 @@ AudioMixerGroupController:
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 38e295c9b26c19243b61f0c3e975a7ee
   m_Children:
+  - {fileID: -6303636089287177368}
   - {fileID: -7485346987327151623}
   m_Volume: 3d91319eba9b6764ebe744e184e76879
   m_Pitch: 5fc09ec31efb95847a8d86340208c948
@@ -87,6 +122,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: 1b2d31b2fc11f534a8f38b0ca4c49b3c
   m_FloatValues:
     588fd3d14abea3f4e920c84f9b177adf: -5.7224793
+    8db1c74e711bb8142aa4c466cf5005ff: -5.7224774
   m_TransitionOverrides: {}
 --- !u!244 &5965917135045583508
 AudioMixerEffectController:
