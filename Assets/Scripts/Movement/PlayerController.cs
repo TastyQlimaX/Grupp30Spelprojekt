@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
@@ -12,9 +13,11 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed;
     public float sprintSpeed;
     public float walkSpeed;
+    public bool Issprinting = false;
 
     public float dashSpeed;
-    public bool dashing; 
+    public bool dashing;
+    public Vector3 startPos;
     
     
     public float groundDrag;
@@ -42,18 +45,21 @@ public class PlayerController : MonoBehaviour
     public bool grounded;
     
     
-    private void Awake()
+    public void Awake()
     {
         _capsuleRb = GetComponent<Rigidbody>();
         GetComponent<PlayerInput>();
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
         playerInputActions.Player.Jump.performed += Jump;
+        playerInputActions.Player.Sprint.performed += Sprint;
+        startposition();
     }
+    
+  
 
     private void StateHandler(bool isSprintingPressed)
     {
-        
         //Mode - Dashing
         if (dashing)
         {
@@ -79,17 +85,38 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+
+    public void startposition()
+    {
+        startPos = _capsuleRb.position;
+    }
     private void FixedUpdate()
     {
         Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
-        bool IsSprinting = playerInputActions.Player.Sprint.inProgress;
-        StateHandler(IsSprinting);
+        /* if (playerInputActions.Player.Sprint.triggered)
+         {
+             Issprinting = !Issprinting;
+             Debug.Log(Issprinting);
+         }*/
+        StateHandler(Issprinting);
         //adds drag when on ground and not dashing
         if(grounded)
             _capsuleRb.AddForce(new Vector3(inputVector.x, 0, inputVector.y).normalized * (moveSpeed * 10f), ForceMode.Force); 
         //in air
         else
             _capsuleRb.AddForce(new Vector3(inputVector.x, 0, inputVector.y).normalized * (moveSpeed * 10f * airMultiplier), ForceMode.Force);
+        if (_capsuleRb.position.y < -50)
+        {
+            _capsuleRb.position = startPos;
+        }
+    }
+
+    private void Sprint(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Issprinting = !Issprinting;
+        }
     }
 
     private void Update()
