@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class PickupScript : MonoBehaviour
     public GameObject Player;
     public bool isPickedUp;
     public int throwStrength;
-
+    public int pickupDrag;
 
     public void Awake()
     {
@@ -48,6 +49,7 @@ public class PickupScript : MonoBehaviour
             whatIsPickable.AddComponent<Rigidbody>();
             PickableRB = whatIsPickable.GetComponent<Rigidbody>();
             PickableRB.constraints = RigidbodyConstraints.FreezeRotation;
+            PickableRB.drag = pickupDrag;
             whatIsPickable.transform.parent = null;
             isPickedUp = false;
             PickableRB.AddForce(new Vector3(PlayerRB.velocity.x, PlayerRB.velocity.y, PlayerRB.velocity.z) * throwStrength, ForceMode.Impulse);
@@ -58,7 +60,6 @@ public class PickupScript : MonoBehaviour
     {
         if (other.CompareTag("Pickable"))
         {
-            Debug.Log("tag is pickable");
             whatIsPickable = other.gameObject;
         } 
     }
