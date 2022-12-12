@@ -93,12 +93,8 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
-        /* if (playerInputActions.Player.Sprint.triggered)
-         {
-             Issprinting = !Issprinting;
-             Debug.Log(Issprinting);
-         }*/
         StateHandler(Issprinting);
+        
         //adds drag when on ground and not dashing
         if(grounded)
             _capsuleRb.AddForce(new Vector3(inputVector.x, 0, inputVector.y).normalized * (moveSpeed * 10f), ForceMode.Force); 
