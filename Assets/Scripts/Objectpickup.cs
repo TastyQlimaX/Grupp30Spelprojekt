@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Objectpickup : MonoBehaviour
+{
     private PlayerInputActions PlayerInputActions;
     private Rigidbody _capsuleRB;
     
