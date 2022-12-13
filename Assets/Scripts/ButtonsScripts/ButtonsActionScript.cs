@@ -22,6 +22,7 @@ public class ButtonsActionScript : MonoBehaviour
         if (button1Script.isPressed && button2Script.isPressed)
         {
             Debug.Log("Both buttons are pressed. Someting will happen here");
+            Destroy(gameObject);
         }
     }
 }

@@ -64,4 +64,11 @@ public class PickupScript : MonoBehaviour
         } 
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Pickable"))
+        { 
+            whatIsPickable = null;
+        }
+    }
 }
