@@ -1,0 +1,4 @@
+Lägg ButtonScript på knapparna
+Lägg ButtonActionScript på saken som ska aktivera/hända när dem båda är nertryckta
+dra dem två knapparna från hierarkin till scriptet på saken som ska aktiveras
+done!
