@@ -1,4 +1,0 @@
-Lägg ut två knappar
-sätt scriptet Button Action Script på saken som ska påverkas när båda är nertryckta
-dra de två knapparna till scriptet på saken som ska förändras.
-Done!
