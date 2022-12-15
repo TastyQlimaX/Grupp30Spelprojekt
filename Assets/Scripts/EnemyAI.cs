@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -11,8 +12,10 @@ public class EnemyAI : MonoBehaviour
     
     //Patrolling
     public Vector3 walkpoint;
-    private bool walkPointSet;
+    public bool walkPointSet;
     public float walkPointRange;
+    public float moveBaseDelay;
+    private float moveDelay;
     
     //Attacking
     public float timeBetweenAttacks;
@@ -28,8 +31,17 @@ public class EnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
+    private void Start()
+    {
+        moveDelay = moveBaseDelay;
+    }
+
     private void Update()
     {
+        if (moveDelay > 0)
+        {
+            moveDelay -= Time.deltaTime;
+        }
         //check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -38,6 +50,8 @@ public class EnemyAI : MonoBehaviour
         if(playerInSightRange && !playerInAttackRange) ChasePlayer();
         if(playerInSightRange && playerInAttackRange) AttackPlayer();
     }
+
+ 
 
     private void Patroling()
     {
@@ -48,7 +62,11 @@ public class EnemyAI : MonoBehaviour
         Vector3 distanceToWalkPoint = transform.position - walkpoint;
         
         //walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f) walkPointSet = false;
+        if (distanceToWalkPoint.magnitude < 1f && moveDelay < 0)
+        {
+            walkPointSet = false;
+            moveDelay = moveBaseDelay;
+        }
 
     }
 
@@ -62,6 +80,8 @@ public class EnemyAI : MonoBehaviour
 
         if (Physics.Raycast(walkpoint, -transform.up, 2f, whatIsGround))
         {
+            
+            Debug.Log("Raycast successful");
             walkPointSet = true;
         }
     }
@@ -73,9 +93,6 @@ public class EnemyAI : MonoBehaviour
     {
         //make sure enemy doesnt move
         agent.SetDestination(transform.position);
-        
-        transform.LookAt(player);
-
         if (!alreadyAttacked)
         {
             //ATTACKS WILL GO HERE
