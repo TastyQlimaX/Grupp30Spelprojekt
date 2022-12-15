@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 
 public class EnemyAI : MonoBehaviour
@@ -44,20 +42,53 @@ public class EnemyAI : MonoBehaviour
     private void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
+
+        if (walkPointSet) agent.SetDestination(walkpoint);
+
+        Vector3 distanceToWalkPoint = transform.position - walkpoint;
         
+        //walkpoint reached
+        if (distanceToWalkPoint.magnitude < 1f) walkPointSet = false;
+
     }
 
     private void SearchWalkPoint()
     {
         //calculate random point in range
-        //float randomZ = Random.Range()
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+        walkpoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        if (Physics.Raycast(walkpoint, -transform.up, 2f, whatIsGround))
+        {
+            walkPointSet = true;
+        }
     }
     private void ChasePlayer()
     {
-        
+        agent.SetDestination(player.position);
     }
     private void AttackPlayer()
     {
+        //make sure enemy doesnt move
+        agent.SetDestination(transform.position);
         
+        transform.LookAt(player);
+
+        if (!alreadyAttacked)
+        {
+            //ATTACKS WILL GO HERE
+            Debug.Log("ATTACK");
+            
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
     }
+
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
+    
 }
