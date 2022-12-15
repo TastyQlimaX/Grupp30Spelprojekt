@@ -9,11 +9,12 @@ public class PickupScript : MonoBehaviour
     private PlayerInputActions PlayerInputActions;
     private Rigidbody PickableRB;
     private Rigidbody PlayerRB;
-    
+
+    public GameObject StoredObj;
     public GameObject whatIsPickable;
     public GameObject playerPickablePoint;
     public GameObject Player;
-    public bool isPickedUp;
+    public bool isPickedUp = false;
     public int throwStrength;
     public int pickupDrag;
 
@@ -23,36 +24,34 @@ public class PickupScript : MonoBehaviour
         GetComponent<PlayerInput>();
         PlayerInputActions = new PlayerInputActions();
         PlayerInputActions.Player.Enable();
-        PlayerInputActions.Player.Interract.performed += Interract;
+        PlayerInputActions.Player.Interract.performed += Interact;
         PlayerRB = Player.GetComponent<Rigidbody>();
     }
 
-    private void PickupObject()
+    private void Interact(InputAction.CallbackContext context)
     {
-        whatIsPickable.transform.SetParent(playerPickablePoint.transform);
-        whatIsPickable.transform.localScale = new Vector3(1f, 1f, 1f);
-
-    }
-
-    private void Interract(InputAction.CallbackContext context)
-    {
+        
+        
         if (context.performed && whatIsPickable.CompareTag("Pickable")&& !isPickedUp)
         {
+            StoredObj = whatIsPickable;
             isPickedUp = true;
-            whatIsPickable.transform.SetParent(playerPickablePoint.transform);
-            whatIsPickable.transform.localPosition = new Vector3(0f, 1f, 0f);
-            Destroy(whatIsPickable.GetComponent<Rigidbody>());
+            Destroy(StoredObj.GetComponent<Rigidbody>());
+            StoredObj.transform.SetParent(playerPickablePoint.transform);
+            StoredObj.transform.localPosition = new Vector3(0f, 1f, 0f);
+            
         }
 
         else if (context.performed && isPickedUp)
         {
-            whatIsPickable.AddComponent<Rigidbody>();
-            PickableRB = whatIsPickable.GetComponent<Rigidbody>();
+            StoredObj.AddComponent<Rigidbody>();
+            PickableRB = StoredObj.GetComponent<Rigidbody>();
             PickableRB.constraints = RigidbodyConstraints.FreezeRotation;
             PickableRB.drag = pickupDrag;
-            whatIsPickable.transform.parent = null;
+            StoredObj.transform.parent = null;
             isPickedUp = false;
             PickableRB.AddForce(new Vector3(PlayerRB.velocity.x, PlayerRB.velocity.y, PlayerRB.velocity.z) * throwStrength, ForceMode.Impulse);
+            StoredObj = null;
         }
     }
 
@@ -61,14 +60,16 @@ public class PickupScript : MonoBehaviour
         if (other.CompareTag("Pickable"))
         {
             whatIsPickable = other.gameObject;
+
         } 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Pickable"))
-        { 
-            whatIsPickable = null;
+        if (other.CompareTag("Pickable") && !isPickedUp)
+        {
+            whatIsPickable = null; 
         }
+
     }
 }

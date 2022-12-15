@@ -6,15 +6,18 @@ using UnityEngine;
 public class ButtonScript : MonoBehaviour
 {
     public bool isPressed;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
+    public string nameOfTag;
     private void OnTriggerEnter(Collider other)
     {
-        isPressed = true;
+        if (other.TryGetComponent<Tags>(out var tags))
+        {
+            if (tags.HasTag(nameOfTag))
+            {
+                isPressed = true; 
+            }
+            
+        }
+        
     }
 
     private void OnTriggerExit(Collider other)
