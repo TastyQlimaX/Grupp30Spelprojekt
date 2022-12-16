@@ -17,6 +17,9 @@ public class PickupScript : MonoBehaviour
     public bool isPickedUp = false;
     public int throwStrength;
     public int pickupDrag;
+    public AudioClip pickupRock;
+    public AudioClip DropRock;
+    public AudioSource PlayerSFX;
 
     public void Awake()
     {
@@ -34,6 +37,8 @@ public class PickupScript : MonoBehaviour
         
         if (context.performed && whatIsPickable.CompareTag("Pickable")&& !isPickedUp)
         {
+            PlayerSFX.clip = pickupRock;
+            PlayerSFX.Play();
             StoredObj = whatIsPickable;
             isPickedUp = true;
             Destroy(StoredObj.GetComponent<Rigidbody>());
@@ -44,6 +49,8 @@ public class PickupScript : MonoBehaviour
 
         else if (context.performed && isPickedUp)
         {
+            PlayerSFX.clip = DropRock;
+            PlayerSFX.Play();
             StoredObj.AddComponent<Rigidbody>();
             PickableRB = StoredObj.GetComponent<Rigidbody>();
             PickableRB.constraints = RigidbodyConstraints.FreezeRotation;

@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour
     public bool walkPointSet;
     public float walkPointRange;
     public float moveBaseDelay;
-    private float moveDelay;
+    public float moveDelay;
     
     //Attacking
     public float timeBetweenAttacks;
@@ -42,6 +42,11 @@ public class EnemyAI : MonoBehaviour
         {
             moveDelay -= Time.deltaTime;
         }
+
+        if (moveDelay < -1)
+        {
+            moveDelay = moveBaseDelay;
+        }
         //check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -62,7 +67,7 @@ public class EnemyAI : MonoBehaviour
         Vector3 distanceToWalkPoint = transform.position - walkpoint;
         
         //walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f && moveDelay < 0)
+        if (moveDelay <= 0)
         {
             walkPointSet = false;
             moveDelay = moveBaseDelay;
