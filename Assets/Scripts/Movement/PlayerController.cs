@@ -1,11 +1,11 @@
-using System;
+using UnityEditor.Build.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     //get references
     private Rigidbody _capsuleRb;
-    private PlayerInputActions playerInputActions;
+    public PlayerInputActions playerInputActions;
     public Animator animator;
     
     //Parameters for movement
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public float airMultiplier;
     public bool readyToJump;
 
+    public bool isDisabled;
     public MovementState state;
     public enum MovementState
     {
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
     
     public void Awake()
     {
+        isDisabled = false;
         _capsuleRb = GetComponent<Rigidbody>();
         GetComponent<PlayerInput>();
         playerInputActions = new PlayerInputActions();
@@ -55,8 +57,6 @@ public class PlayerController : MonoBehaviour
         playerInputActions.Player.Sprint.performed += Sprint;
         startposition();
     }
-    
-  
 
     private void StateHandler(bool isSprintingPressed)
     {
@@ -86,6 +86,17 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void EnableDisable()
+    {
+        Debug.Log("EnableDisable has been called");
+        if(isDisabled) playerInputActions.Player.Disable();
+        else
+        {
+            playerInputActions.Player.Enable();
+        }
+        isDisabled = !isDisabled;
+    }
+
     public void startposition()
     {
         startPos = _capsuleRb.position;
@@ -104,6 +115,15 @@ public class PlayerController : MonoBehaviour
         if (_capsuleRb.position.y < -50)
         {
             _capsuleRb.position = startPos;
+        }
+
+        if (isDisabled)
+        {
+            playerInputActions.Player.Disable();
+        }
+        else
+        {
+            playerInputActions.Player.Enable();
         }
     }
 
