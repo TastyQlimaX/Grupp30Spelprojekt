@@ -1,3 +1,4 @@
+using System;
 using UnityEditor.Build.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,8 +7,9 @@ public class PlayerController : MonoBehaviour
     //get references
     private Rigidbody _capsuleRb;
     public PlayerInputActions playerInputActions;
-    public Animator animator;
     
+    public Animator animator;
+
     //Parameters for movement
     [Header("Movement")]
     private float moveSpeed;
@@ -19,7 +21,8 @@ public class PlayerController : MonoBehaviour
     public bool dashing;
     public Vector3 startPos;
     
-    
+
+
     public float groundDrag;
 
     public float jumpForce;
@@ -97,6 +100,10 @@ public class PlayerController : MonoBehaviour
         isDisabled = !isDisabled;
     }
 
+    private void Start()
+    {
+    }
+
     public void startposition()
     {
         startPos = _capsuleRb.position;
@@ -152,7 +159,12 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Horizontal", _capsuleRb.velocity.x);
         animator.SetFloat("Vertical", _capsuleRb.velocity.z);
         animator.SetFloat("Speed", _capsuleRb.velocity.sqrMagnitude);
+
+        animator.speed = 1 * (_capsuleRb.velocity.magnitude/animationSpeed);
+
     }
+
+    public int animationSpeed;
 
     private void SpeedControl()
     {
