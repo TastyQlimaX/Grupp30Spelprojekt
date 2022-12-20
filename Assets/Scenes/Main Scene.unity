@@ -3694,6 +3694,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1515766762530382351, guid: bd157d3f8262f714ba9f08154500ab21,
         type: 3}
+      propertyPath: buttonSFX
+      value: 
+      objectReference: {fileID: 611335882}
+    - target: {fileID: 1515766762530382351, guid: bd157d3f8262f714ba9f08154500ab21,
+        type: 3}
       propertyPath: nameOfTag
       value: harvest
       objectReference: {fileID: 0}
@@ -10702,6 +10707,12 @@ MonoBehaviour:
 --- !u!1 &611335877 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 859716451760748604, guid: bd157d3f8262f714ba9f08154500ab21,
+    type: 3}
+  m_PrefabInstance: {fileID: 285783561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &611335882 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1978459829748850219, guid: bd157d3f8262f714ba9f08154500ab21,
     type: 3}
   m_PrefabInstance: {fileID: 285783561}
   m_PrefabAsset: {fileID: 0}
@@ -42946,6 +42957,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2035783006}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1118144601 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1978459829748850219, guid: bd157d3f8262f714ba9f08154500ab21,
+    type: 3}
+  m_PrefabInstance: {fileID: 2035783006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1128164981
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -43225,6 +43242,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1515766762530382351, guid: bd157d3f8262f714ba9f08154500ab21,
+        type: 3}
+      propertyPath: buttonSFX
+      value: 
+      objectReference: {fileID: 1982926383}
     - target: {fileID: 1515766762530382351, guid: bd157d3f8262f714ba9f08154500ab21,
         type: 3}
       propertyPath: nameOfTag
@@ -45446,7 +45468,7 @@ MonoBehaviour:
   moveBaseDelay: 3
   moveDelay: 0
   timeBetweenAttacks: 1
-  sightRange: 20
+  sightRange: 5
   attackRange: 5
   playerInSightRange: 0
   playerInAttackRange: 0
@@ -52277,6 +52299,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1722911789}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1560077067 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1978459829748850219, guid: bd157d3f8262f714ba9f08154500ab21,
+    type: 3}
+  m_PrefabInstance: {fileID: 1722911789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1564800732
 GameObject:
   m_ObjectHideFlags: 0
@@ -56030,6 +56058,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1515766762530382351, guid: bd157d3f8262f714ba9f08154500ab21,
+        type: 3}
+      propertyPath: buttonSFX
+      value: 
+      objectReference: {fileID: 1560077067}
     - target: {fileID: 1515766762530382351, guid: bd157d3f8262f714ba9f08154500ab21,
         type: 3}
       propertyPath: nameOfTag
@@ -60573,6 +60606,12 @@ MonoBehaviour:
 --- !u!1 &1982926378 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 859716451760748604, guid: bd157d3f8262f714ba9f08154500ab21,
+    type: 3}
+  m_PrefabInstance: {fileID: 1138505375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1982926383 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1978459829748850219, guid: bd157d3f8262f714ba9f08154500ab21,
     type: 3}
   m_PrefabInstance: {fileID: 1138505375}
   m_PrefabAsset: {fileID: 0}
@@ -66334,9 +66373,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1515766762530382351, guid: bd157d3f8262f714ba9f08154500ab21,
         type: 3}
-      propertyPath: nameOfTag
-      value: sun
-      objectReference: {fileID: 0}
+      propertyPath: buttonSFX
+      value: 
+      objectReference: {fileID: 1118144601}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd157d3f8262f714ba9f08154500ab21, type: 3}
 --- !u!1 &2037013533
