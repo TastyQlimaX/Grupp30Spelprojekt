@@ -43,7 +43,7 @@ public class PickupScript : MonoBehaviour
             isPickedUp = true;
             Destroy(StoredObj.GetComponent<Rigidbody>());
             StoredObj.transform.SetParent(playerPickablePoint.transform);
-            StoredObj.transform.localPosition = new Vector3(0f, 1f, 0f);
+            StoredObj.transform.localPosition = new Vector3(0f, 1f, 1f);
             
         }
 
