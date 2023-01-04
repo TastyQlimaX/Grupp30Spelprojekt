@@ -86,7 +86,7 @@ public class EnemyAI : MonoBehaviour
         if (Physics.Raycast(walkpoint, -transform.up, 2f, whatIsGround))
         {
             
-            Debug.Log("Raycast successful");
+            //Debug.Log("Raycast successful");
             walkPointSet = true;
         }
     }

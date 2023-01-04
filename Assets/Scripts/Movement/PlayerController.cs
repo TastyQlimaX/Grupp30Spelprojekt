@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
     public void EnableDisable()
     {
-        Debug.Log("EnableDisable has been called");
+        //Debug.Log("EnableDisable has been called");
         if(isDisabled) playerInputActions.Player.Disable();
         else
         {

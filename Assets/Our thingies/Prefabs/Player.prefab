@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &345910735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 345910736}
+  m_Layer: 11
+  m_Name: PickupXYZ
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &345910736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345910735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5333810861723122480}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5333810861460346270
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +42,7 @@ GameObject:
   - component: {fileID: 5333810861460346243}
   - component: {fileID: 5333810861460346242}
   - component: {fileID: 5333810861460346244}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,13 +123,13 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5333810861460346270}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 5ad963ee6c07ac447aa393533d44569f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.39509115
   m_Height: 1.5200937
   m_Direction: 1
-  m_Center: {x: 0, y: -0.23995316, z: 0}
+  m_Center: {x: 0, y: -0.39, z: 0}
 --- !u!1 &5333810861723122447
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +145,11 @@ GameObject:
   - component: {fileID: 621019160145392482}
   - component: {fileID: 5333810861723122486}
   - component: {fileID: 5333810861723122485}
-  m_Layer: 0
+  - component: {fileID: 5333810863140750380}
+  - component: {fileID: 1958723373}
+  - component: {fileID: 1958723352}
+  - component: {fileID: 1958723359}
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -136,6 +171,7 @@ Transform:
   - {fileID: 5333810861460346243}
   - {fileID: 5333810862029424902}
   - {fileID: 5333810863273244531}
+  - {fileID: 345910736}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -231,21 +267,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5333810861723122486}
-  sprintSpeed: 0
-  walkSpeed: 0
-  dashSpeed: 0
+  sprintSpeed: 7
+  walkSpeed: 4
+  Issprinting: 0
+  dashSpeed: 25
   dashing: 0
+  startPos: {x: 0, y: 0, z: 0}
   groundDrag: 5
-  jumpForce: 6
+  jumpForce: 7
   jumpCooldown: 0.25
   airMultiplier: 0.4
   readyToJump: 1
+  isDisabled: 0
   state: 0
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 1024
-  grounded: 0
+    m_Bits: 2147483647
+  grounded: 1
+  animationSpeed: 7
 --- !u!114 &621019160145392482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,9 +299,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 0}
-  dashForce: 0
-  dashDuration: 0
-  dashCD: 0
+  dashForce: 20
+  dashDuration: 0.15
+  dashCD: 2
 --- !u!95 &5333810861723122486
 Animator:
   serializedVersion: 4
@@ -272,7 +312,7 @@ Animator:
   m_GameObject: {fileID: 5333810861723122447}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 90f3e0547e85ef046a895efd5f3ad0e9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3660ac7b5338df34b9dc3695bbe76345, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -328,12 +368,160 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 2.3076923, y: 2.3076923}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!136 &5333810863140750380
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333810861723122447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &1958723373
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333810861723122447}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 8545605229029852828, guid: c24cb4608fe345947bd1420d8e8445fd,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1958723352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333810861723122447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9725f037011853e4a8a64b6166a731aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StoredObj: {fileID: 0}
+  whatIsPickable: {fileID: 0}
+  playerPickablePoint: {fileID: 345910735}
+  Player: {fileID: 5333810861723122447}
+  isPickedUp: 0
+  throwStrength: 2
+  pickupDrag: 0
+  pickupRock: {fileID: 8300000, guid: 0d53fea5a65d7664e81ebb021cc649b5, type: 3}
+  DropRock: {fileID: 8300000, guid: c32d3b4a491c30949a91eb4de98d30fb, type: 3}
+  PlayerSFX: {fileID: 1958723373}
+--- !u!114 &1958723359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333810861723122447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d900f17927847ba46982fdae47210a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthbar: {fileID: 0}
 --- !u!1 &5333810862029424901
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5333810862029424902}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5333810863273244531}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CameraHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
