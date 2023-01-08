@@ -9,6 +9,8 @@ public class ButtonScript : MonoBehaviour
     public string nameOfTag;
     public AudioSource buttonSFX;
     public AudioClip Pushed;
+    public GameObject Light;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Tags>(out var tags))
@@ -18,6 +20,7 @@ public class ButtonScript : MonoBehaviour
                 isPressed = true;
                 buttonSFX.clip = Pushed;
                 buttonSFX.Play();
+                Light.SetActive(true);
             }
             
         }
