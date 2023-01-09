@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     private int currentHealth;
     private SpriteRenderer RedFlash;
     public ParticleSystem deathParticles;
-    
+
 
     public float flashDuration = 0.3f;
     private void Start()
@@ -31,10 +31,11 @@ public class Enemy : MonoBehaviour
             var em = deathParticles.emission;
             
             em.enabled = true;
+           
             deathParticles.Play();
 
             RedFlash.enabled = false;
-            Invoke(nameof(Die), 5);
+            Invoke(nameof(Die), 1);
         }
     }
 
@@ -44,7 +45,8 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
-        Destroy(this);
+        
+        Destroy(gameObject);
         //Die animation
         
         
