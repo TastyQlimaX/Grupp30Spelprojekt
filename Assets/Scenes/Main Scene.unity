@@ -12524,6 +12524,18 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &302676002 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7590144687461404806, guid: 0bc6a9eb82cdb364697ff60c515f9aaa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1820678595}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302675943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &302676004
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -90342,7 +90354,7 @@ PrefabInstance:
     - target: {fileID: 7590144687461404821, guid: 0bc6a9eb82cdb364697ff60c515f9aaa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 149.35
+      value: 144.94
       objectReference: {fileID: 0}
     - target: {fileID: 7590144687461404821, guid: 0bc6a9eb82cdb364697ff60c515f9aaa,
         type: 3}
@@ -95931,7 +95943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 0}
+  selectedFlowchart: {fileID: 302676002}
 --- !u!4 &1830473172
 Transform:
   m_ObjectHideFlags: 1
