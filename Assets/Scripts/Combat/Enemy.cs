@@ -9,6 +9,10 @@ public class Enemy : MonoBehaviour
     private int currentHealth;
     private SpriteRenderer RedFlash;
     public ParticleSystem deathParticles;
+    public AudioSource EnemySource;
+    public AudioClip DamageTaken;
+    public AudioClip Defeated;
+    
 
 
     public float flashDuration = 0.3f;
@@ -20,6 +24,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        EnemySource.clip = DamageTaken;
         RedFlash.color = Color.red;
         currentHealth -= damage;
         
@@ -28,6 +33,7 @@ public class Enemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            EnemySource.clip = Defeated;
             var em = deathParticles.emission;
             
             em.enabled = true;
@@ -35,8 +41,9 @@ public class Enemy : MonoBehaviour
             deathParticles.Play();
 
             RedFlash.enabled = false;
-            Invoke(nameof(Die), 1);
+            Invoke(nameof(Die), 5);
         }
+        EnemySource.Play();
     }
 
     void ColorChange()
