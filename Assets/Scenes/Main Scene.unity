@@ -8966,18 +8966,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1820678595}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &302675944 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7590144687461404806, guid: 0bc6a9eb82cdb364697ff60c515f9aaa,
-    type: 3}
-  m_PrefabInstance: {fileID: 1820678595}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 302675943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &302675957
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -9143,8 +9131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 716.2505
-    y: 131.99629
+    x: 746.9322
+    y: 103.58722
     width: 111.36363
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -9309,8 +9297,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 1002.9775
-    y: 167.17813
+    x: 1007.5229
+    y: 188.76901
     width: 152.2727
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -9336,8 +9324,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 846.2957
-    y: 206.08722
+    x: 889.47784
+    y: 189.04181
     width: 114.77272
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -9804,7 +9792,7 @@ MonoBehaviour:
   delay: 0
 --- !u!114 &302675989
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9816,10 +9804,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 59
   indentLevel: 0
-  storyText: This isn't some anti-magic. This is just poison! // when you used it,
-    did they turn to normal?
+  storyText: They got destroyed...
   description: 
-  character: {fileID: 2127477157}
+  character: {fileID: 5333810863140750395}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -9844,8 +9831,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 712.81854
-    y: 260.6326
+    x: 698.04596
+    y: 217.45067
     width: 113.63635
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -9859,10 +9846,12 @@ MonoBehaviour:
   - {fileID: 302675992}
   - {fileID: 302675991}
   - {fileID: 302675989}
+  - {fileID: 302675996}
+  - {fileID: 302675995}
   suppressAllAutoSelections: 0
 --- !u!114 &302675991
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9874,9 +9863,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 58
   indentLevel: 0
-  storyText: Just as I thought
+  storyText: when you used it, did the plants turn back to normal?
   description: 
-  character: {fileID: 0}
+  character: {fileID: 2127477157}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -9889,7 +9878,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &302675992
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9916,7 +9905,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &302675993
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9966,6 +9955,58 @@ MonoBehaviour:
   hideThisOption:
     booleanRef: {fileID: 0}
     booleanVal: 0
+--- !u!114 &302675995
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302675943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 61
+  indentLevel: 0
+  text: Could you fix this?
+  description: 
+  targetBlock: {fileID: 302675963}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &302675996
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302675943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 60
+  indentLevel: 0
+  storyText: 'Just as I thought, I''m afraid Candor haven''t been honest with you. '
+  description: 
+  character: {fileID: 2127477157}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!4 &304297562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8001147376073210305, guid: 71f66ca995061084eb6d9abb4a8929be,
@@ -66011,7 +66052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: Candor the Magi
-  nameColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  nameColor: {r: 0.5943396, g: 0.4903677, b: 0.1541919, a: 1}
   soundEffect: {fileID: 8300000, guid: 849f5fa7fe21b4d468d1858b6d1eb800, type: 3}
   portraits: []
   portraitsFace: 0
@@ -67320,6 +67361,8 @@ GameObject:
   - component: {fileID: 1687505066}
   - component: {fileID: 1687505071}
   - component: {fileID: 1687505070}
+  - component: {fileID: 1687505073}
+  - component: {fileID: 1687505072}
   m_Layer: 0
   m_Name: Intro/Flow
   m_TagString: Untagged
@@ -67381,7 +67424,9 @@ MonoBehaviour:
   commandList:
   - {fileID: 1687505064}
   - {fileID: 1687504999}
+  - {fileID: 1687505073}
   - {fileID: 1687505014}
+  - {fileID: 1687505072}
   - {fileID: 1687505013}
   suppressAllAutoSelections: 0
 --- !u!114 &1687505002
@@ -67408,7 +67453,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 1687505012}
   selectedCommands: []
   variables:
   - {fileID: 1687505065}
@@ -67509,7 +67555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 11
   indentLevel: 0
-  text: What is gone? Are you sure you haven't misplaced it?
+  text: Are you sure you haven't just misplaced it?
   description: 
   targetBlock: {fileID: 1687505012}
   hideIfVisited: 0
@@ -67534,7 +67580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 10
   indentLevel: 0
-  storyText: It's gone, it's all ruined!
+  storyText: Silva! Oh thank Gaia!
   description: 
   character: {fileID: 1607702306}
   portrait: {fileID: 0}
@@ -69186,6 +69232,60 @@ MonoBehaviour:
     the powder.  '
   description: 
   character: {fileID: 1607702306}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1687505072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687504997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 77
+  indentLevel: 0
+  storyText: It's gone! You have to help me,or it's all ruined!
+  description: 
+  character: {fileID: 1607702306}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1687505073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687504997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 76
+  indentLevel: 0
+  storyText: What is going on?
+  description: 
+  character: {fileID: 5333810863140750395}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -77228,7 +77328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 302675944}
+  selectedFlowchart: {fileID: 1687505002}
 --- !u!4 &1830473172
 Transform:
   m_ObjectHideFlags: 1
@@ -88892,7 +88992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: Nemesis
-  nameColor: {r: 1, g: 1, b: 1, a: 1}
+  nameColor: {r: 0, g: 0.4056604, b: 0.345209, a: 1}
   soundEffect: {fileID: 0}
   portraits: []
   portraitsFace: 0
@@ -90146,6 +90246,25 @@ MonoBehaviour:
   attackRange: 2.2
   attackDamage: 40
   attackRate: 2
+--- !u!114 &5333810863140750395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333810863140750362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: Player
+  nameColor: {r: 0.77647066, g: 0.39607847, b: 0.08627451, a: 1}
+  soundEffect: {fileID: 0}
+  portraits: []
+  portraitsFace: 0
+  setSayDialog: {fileID: 0}
+  description: 
 --- !u!1001 &6951685954767812183
 PrefabInstance:
   m_ObjectHideFlags: 0
