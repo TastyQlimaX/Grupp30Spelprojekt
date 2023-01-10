@@ -6256,7 +6256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97638315}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 48.5, y: 8.999994, z: 115.780014}
+  m_LocalPosition: {x: 81.1, y: 8.999994, z: 1.6800103}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8990,7 +8990,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301675302}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7.29, y: 4.78, z: 3.75}
@@ -9009,7 +9009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowchart: {fileID: 1538638452}
   pHere: 0
-  StartPoint: 
+  StartPoint: TalkBlock
 --- !u!1 &302675943 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7590144687461404805, guid: 0bc6a9eb82cdb364697ff60c515f9aaa,
@@ -14845,7 +14845,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536082063}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 48.5, y: 8.999994, z: 115.780014}
+  m_LocalPosition: {x: 81.1, y: 8.999994, z: 1.6800103}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58856,7 +58856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 56, y: 71}
+  scrollPos: {x: 54, y: 73}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -58868,9 +58868,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1538638457}
-  selectedCommands:
-  - {fileID: 1538638456}
+  - {fileID: 1538638451}
+  selectedCommands: []
   variables:
   - {fileID: 1538638445}
   description: 
@@ -58956,9 +58955,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 9
   indentLevel: 0
-  storyText: Bloop blooob
+  storyText: 'heyoo
+
+'
   description: 
-  character: {fileID: 301675307}
+  character: {fileID: 0}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -58983,14 +58984,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 413
-    y: 84
-    width: 80
+    x: 508
+    y: 80
+    width: 113
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 8
-  blockName: Goop
+  blockName: TalkBlock1
   description: 
   eventHandler: {fileID: 0}
   commandList:
@@ -79684,7 +79685,7 @@ PrefabInstance:
     - target: {fileID: 5333810861723122480, guid: 3dfe9dafec6ebb545a7a9e9ddb9aeeea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.5
+      value: 81.1
       objectReference: {fileID: 0}
     - target: {fileID: 5333810861723122480, guid: 3dfe9dafec6ebb545a7a9e9ddb9aeeea,
         type: 3}
@@ -79694,7 +79695,7 @@ PrefabInstance:
     - target: {fileID: 5333810861723122480, guid: 3dfe9dafec6ebb545a7a9e9ddb9aeeea,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 129
+      value: 14.9
       objectReference: {fileID: 0}
     - target: {fileID: 5333810861723122480, guid: 3dfe9dafec6ebb545a7a9e9ddb9aeeea,
         type: 3}
