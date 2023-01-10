@@ -12,12 +12,16 @@ public class PlayerCombat : MonoBehaviour
     private Rigidbody RB;
     public LayerMask enemyLayers;
 
+    public AudioSource PlayerSFX;
+    public AudioClip AttackSound;
+    
     public float attackRange;
     public int attackDamage = 40;
     public float attackRate = 2f;
     private float nextAttackTime = 0f;
     public void Awake()
     {
+        PlayerSFX.clip = AttackSound;
         RB = GetComponent<Rigidbody>();
         GetComponent<PlayerInput>();
         playerInputActions = new PlayerInputActions();
@@ -31,6 +35,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (context.performed)
             {
+                PlayerSFX.Play();
                 nextAttackTime = Time.time + 1f / attackRate;
                 var em = AttackParticles.emission;
                 Debug.Log("attack button pressed");
