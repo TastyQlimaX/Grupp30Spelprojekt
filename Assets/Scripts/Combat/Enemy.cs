@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public AudioSource EnemySource;
     public AudioClip DamageTaken;
     public AudioClip Defeated;
+    public int timetodeath;
     
 
 
@@ -41,7 +42,7 @@ public class Enemy : MonoBehaviour
             deathParticles.Play();
 
             RedFlash.enabled = false;
-            Invoke(nameof(Die), 5);
+            Invoke(nameof(Die), timetodeath);
         }
         EnemySource.Play();
     }
