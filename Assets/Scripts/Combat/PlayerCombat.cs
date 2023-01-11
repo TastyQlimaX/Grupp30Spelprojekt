@@ -35,6 +35,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (context.performed)
             {
+                PlayerSFX.clip = AttackSound;
                 PlayerSFX.Play();
                 nextAttackTime = Time.time + 1f / attackRate;
                 var em = AttackParticles.emission;

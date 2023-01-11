@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 [RequireComponent(typeof(AudioSource))]
 public class AudioPlay : MonoBehaviour
 {
-    private AudioSource source;
+    public AudioSource source;
     private bool firstPlay = false;
     private bool playingAudioFunction = false;
     private int tempClip = -1;
