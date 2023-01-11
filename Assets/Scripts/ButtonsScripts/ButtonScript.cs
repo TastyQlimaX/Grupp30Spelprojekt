@@ -22,13 +22,22 @@ public class ButtonScript : MonoBehaviour
                 buttonSFX.Play();
                 Light.SetActive(true);
             }
-            
+
         }
         
     }
 
     private void OnTriggerExit(Collider other)
     {
-        isPressed = false;
+        if (other.TryGetComponent<Tags>(out var tags))
+        {
+            if (tags.HasTag(nameOfTag))
+            {
+                isPressed = false;
+                buttonSFX.clip = Pushed;
+                Light.SetActive(false);
+            }
+
+        }
     }
 }
